@@ -17,6 +17,7 @@ public class MListeners {
         pm.registerEvents(new LPickExperienceOnGroung(), main);
         pm.registerEvents(new LDropItemOnGroung(), main);
         pm.registerEvents(new LPlayerMove(), main);
+        pm.registerEvents(new LPlayerDeath(), main);
     }
 
 }
