@@ -16,7 +16,15 @@ public class LPlayerDeath implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e){
         Player p = e.getPlayer();
-        main.logConsole(Level.INFO, Objects.requireNonNull(e.deathMessage()).toString());
+        if (e.getDeathMessage().contains("drowned")){
+            e.setDeathMessage(p.getName()+" a rejoint le petit Grégory !");
+        }
+        if (e.getDeathMessage().contains("Creeper")){
+            e.setDeathMessage(p.getName()+" a coincé son pousse dans un creeper !");
+        }
+        if (e.getDeathMessage().contains("flammes")){
+            e.setDeathMessage(p.getName()+" a découvert que le feu sa brûles !");
+        }
     }
 
 }
