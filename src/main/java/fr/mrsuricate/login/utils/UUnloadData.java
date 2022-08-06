@@ -10,11 +10,11 @@ public class UUnloadData {
     private final Main main = Main.getInstance();
     
     public void unloadPassword() throws IOException {
-        YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(main.dataFile);
+        YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(main.passwordFile);
         for (Upassword password : main.password) {
             yamlConfiguration.set("Password."+password.getName(),password.getPassword());
         }
-        yamlConfiguration.save(main.dataFile);
+        yamlConfiguration.save(main.passwordFile);
     }
     
 }

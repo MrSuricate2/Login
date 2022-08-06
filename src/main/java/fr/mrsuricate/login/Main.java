@@ -35,24 +35,16 @@ public final class Main extends JavaPlugin {
 
     //Files
 
-    //data.yml [Default folder]
-    public File dataFile = new File(getDataFolder().getPath() + "/data.yml");
-
     //Experience.yml [Default folder]
     public File experienceFile = new File(getDataFolder().getPath() + "/Experience.yml");
-
     //Heal.yml [Default folder]
     public File healFile = new File(getDataFolder().getPath() + "/Heal.yml");
-
     //Inventory.yml [Default folder]
     public File inventoryFile = new File(getDataFolder().getPath() + "/Inventory.yml");
-
     //Password.yml [Default folder]
     public File passwordFile = new File(getDataFolder().getPath() + "/Password.yml");
-
     //Position.yml [Default folder]
     public File positionFile = new File(getDataFolder().getPath() + "/Position.yml");
-
     //Saturation.yml [Default folder]
     public File saturationFile = new File(getDataFolder().getPath() + "/Saturation.yml");
 

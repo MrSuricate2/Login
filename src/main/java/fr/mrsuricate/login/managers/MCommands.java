@@ -3,6 +3,7 @@ package fr.mrsuricate.login.managers;
 import fr.mrsuricate.login.Main;
 import fr.mrsuricate.login.commands.Clogin;
 import fr.mrsuricate.login.commands.Cregister;
+import fr.mrsuricate.login.tabcompleter.Tlogin;
 
 import java.util.Objects;
 
@@ -13,6 +14,7 @@ public class MCommands {
     public void initCommands() {
         Objects.requireNonNull(main.getCommand("login")).setExecutor(new Clogin());
         Objects.requireNonNull(main.getCommand("register")).setExecutor(new Cregister());
+        Objects.requireNonNull(main.getCommand("login")).setTabCompleter(new Tlogin());
     }
 
 }
