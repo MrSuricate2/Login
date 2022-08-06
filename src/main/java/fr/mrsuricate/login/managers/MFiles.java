@@ -13,7 +13,12 @@ public class MFiles {
     private final Main main = Main.getInstance();
 
     public void initFile() {
-
+        ressourceSetup("","Experience.yml", false);
+        ressourceSetup("","Heal.yml", false);
+        ressourceSetup("","Inventory.yml", false);
+        ressourceSetup("","Password.yml", false);
+        ressourceSetup("","Position.yml", false);
+        ressourceSetup("","Saturation.yml", false);
     }
 
     public void ressourceSetup(String folder, String fileName, boolean reset) {

@@ -19,9 +19,14 @@ public class Cregister implements CommandExecutor {
                 sender.sendMessage("/register <prénom> <mot de passe>");
             }
             if (args.length == 2){
-                main.password.add(new Upassword(args[0].toLowerCase(),args[1]));
-                main.playerLogin.add(new Uplayer(((Player) sender).getPlayer(), args[0].toLowerCase()));
-                sender.sendMessage("§aEnregistrement terminer !");
+                if (main.allPlayerRegistered.contains(args[0].toLowerCase())){
+                    main.password.add(new Upassword(args[0].toLowerCase(),args[1]));
+                    main.playerLogin.add(new Uplayer(((Player) sender).getPlayer(), args[0].toLowerCase()));
+                    main.login.add(((Player) sender).getPlayer());
+                    sender.sendMessage("§aEnregistrement terminer !");
+                } else {
+                    sender.sendMessage("§cVous avez déjà un compte");
+                }
             }
             if (args.length > 2){
                 sender.sendMessage("/register <prénom> <mot de passe>");

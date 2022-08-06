@@ -5,7 +5,6 @@ import fr.mrsuricate.login.managers.MFiles;
 import fr.mrsuricate.login.managers.MListeners;
 import fr.mrsuricate.login.managers.MLoad;
 import fr.mrsuricate.login.utils.*;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -38,20 +37,31 @@ public final class Main extends JavaPlugin {
 
     //data.yml [Default folder]
     public File dataFile = new File(getDataFolder().getPath() + "/data.yml");
-    public FileConfiguration fileDataConfiguration;
 
-    //message.yml [Default folder]
-    public File messagesFile = new File(getDataFolder().getPath() + "/messages.yml");
-    public FileConfiguration fileMessagesConfiguration;
+    //Experience.yml [Default folder]
+    public File experienceFile = new File(getDataFolder().getPath() + "/Experience.yml");
+
+    //Heal.yml [Default folder]
+    public File healFile = new File(getDataFolder().getPath() + "/Heal.yml");
+
+    //Inventory.yml [Default folder]
+    public File inventoryFile = new File(getDataFolder().getPath() + "/Inventory.yml");
+
+    //Password.yml [Default folder]
+    public File passwordFile = new File(getDataFolder().getPath() + "/Password.yml");
+
+    //Position.yml [Default folder]
+    public File positionFile = new File(getDataFolder().getPath() + "/Position.yml");
+
+    //Saturation.yml [Default folder]
+    public File saturationFile = new File(getDataFolder().getPath() + "/Saturation.yml");
 
 
     //List
     public List<Upassword> password = new ArrayList<>();
     public List<Player> login = new ArrayList<>();
+    public List<String> allPlayerRegistered = new ArrayList<>();
     public List<Uplayer> playerLogin = new ArrayList<>();
-    public List<UInventory> playerInventory = new ArrayList<>();
-
-
 
 
     @Override
@@ -77,10 +87,6 @@ public final class Main extends JavaPlugin {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public MLoad getLoadManager() {
-        return loadManager;
     }
 
     public MListeners getEventsManager() {

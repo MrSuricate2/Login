@@ -20,7 +20,7 @@ public class MLoad {
         main.getFilesManager().initFile();
         main.logConsole(Level.INFO, "Chargement des Commands...");
         main.getCommandsManager().initCommands();
-        main.logConsole(Level.INFO, "Chargement des Données...");
+        main.logConsole(Level.INFO, "Chargement des mots de passe...");
         main.getuLoadData().loadPassword();
         main.logConsole(Level.INFO, "----");
 
@@ -31,7 +31,7 @@ public class MLoad {
     }
 
     public void pluginUnLoad() throws IOException {
-        main.logConsole(Level.INFO, "Enregistrement des Données...");
+        main.logConsole(Level.INFO, "Enregistrement des mots de passe...");
         main.getuUnloadData().unloadPassword();
         pluginDisable();
     }

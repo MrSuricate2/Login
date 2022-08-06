@@ -2,7 +2,6 @@ package fr.mrsuricate.login.listeners;
 
 import fr.mrsuricate.login.Main;
 import fr.mrsuricate.login.utils.UExperienceManager;
-import fr.mrsuricate.login.utils.Upassword;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;

@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Clogin implements CommandExecutor {
 
@@ -32,17 +33,27 @@ public class Clogin implements CommandExecutor {
                             Player p = ((Player) sender).getPlayer();
                             assert p != null;
                             p.sendMessage("§aVous êtes désormais connecter "+ args[0].toLowerCase()+".");
-                            main.playerLogin.add(new Uplayer(p.getPlayer(), args[0]));
-                            YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(main.dataFile);
-                            ItemStack[] inventory = ((List<ItemStack>) (yamlConfiguration.get("Inventory." + args[0].toLowerCase()))).toArray(new ItemStack[0]);
+                            main.playerLogin.add(new Uplayer(p.getPlayer(), args[0].toLowerCase()));
+                            //Inventaire
+                            YamlConfiguration inventaire = YamlConfiguration.loadConfiguration(main.inventoryFile);
+                            ItemStack[] inventory = ((List<ItemStack>) (Objects.requireNonNull(inventaire.get("Inventory." + args[0].toLowerCase())))).toArray(new ItemStack[0]);
                             p.getInventory().setContents(inventory);
-                            Location loc = (Location) yamlConfiguration.get("Position." + args[0].toLowerCase());
+                            //Position
+                            YamlConfiguration position = YamlConfiguration.loadConfiguration(main.positionFile);
+                            Location loc = (Location) position.get("Position." + args[0].toLowerCase());
+                            assert loc != null;
                             p.teleport(loc);
-                            double health = yamlConfiguration.getDouble("Heal." + args[0].toLowerCase());
-                            p.getPlayer().setHealth(health);
-                            int saturation = yamlConfiguration.getInt("Saturation." + args[0].toLowerCase());
-                            p.getPlayer().setFoodLevel(saturation);
-                            int XP = yamlConfiguration.getInt("XP." + args[0].toLowerCase());
+                            //Santé
+                            YamlConfiguration heal = YamlConfiguration.loadConfiguration(main.healFile);
+                            double health = heal.getDouble("Heal." + args[0].toLowerCase());
+                            Objects.requireNonNull(p.getPlayer()).setHealth(health);
+                            //Saturation
+                            YamlConfiguration saturation = YamlConfiguration.loadConfiguration(main.saturationFile);
+                            int food = saturation.getInt("Saturation." + args[0].toLowerCase());
+                            p.getPlayer().setFoodLevel(food);
+                            //expérience
+                            YamlConfiguration experience = YamlConfiguration.loadConfiguration(main.experienceFile);
+                            int XP = experience.getInt("XP." + args[0].toLowerCase());
                             UExperienceManager.setTotalExperience(p,XP);
                             p.setInvulnerable(false);
                             main.login.add(p);
